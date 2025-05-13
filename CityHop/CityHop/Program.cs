@@ -1,7 +1,11 @@
+using CityHop.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<GtfsContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("CityHop")));
 
 var app = builder.Build();
 

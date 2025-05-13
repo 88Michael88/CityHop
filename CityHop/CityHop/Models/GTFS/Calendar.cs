@@ -1,13 +1,18 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
-namespace CityHop.Models;
+namespace CityHop.Models.GTFS;
 
 [Table("calendar")]
 public class Calendar
 {
     [Key] public int Id { get; set; }
-    [Required] [Column("service_id")] public string ServiceId { get; set; }
+
+    [Required]
+    [MaxLength(64)]
+    [Column("service_id")]
+    public required string ServiceId { get; set; }
     [Required] [Column("monday")] public bool Monday { get; set; }
     [Required] [Column("tuesday")] public bool Tuesday { get; set; }
     [Required] [Column("wednesday")] public bool Wednesday { get; set; }
